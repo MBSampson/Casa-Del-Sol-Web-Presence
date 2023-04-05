@@ -1,26 +1,44 @@
-    function loadScript(src,callback){
+function loadScript(src,callback){
   
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    if(callback)script.onload=callback;
-    document.getElementsByTagName("head")[0].appendChild(script);
-    script.src = src;
-  }
-  
-  
-  loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzO-kFoyPTj9B6TpYNhsMMxb49bi6LPXg&callback=initialize');
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  if(callback)script.onload=callback;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  script.src = src;
+}
 
 
+loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzO-kFoyPTj9B6TpYNhsMMxb49bi6LPXg&callback=initialize');
+
+function jump(h){
+  if(location.href.includes("#")) {
+    var url = location.href.split("#")[0];
+    console.log("splitting");  
+    console.log(url);
+  } else {
+    var url = location.href;
+    console.log(url);
+  }            
+  console.log(url); 
+ 
+  // If the user is on desktop then redirect to the d-view
+  navToDesktop();
+
+  window.location.href = url+"#"+h;
+}
+
+// Google Map 
 function initialize() {
 	
 	var contentString = '<div id="map-content">'+
-      '<h1>Casa Del Sol</h1>'+
-	  '<h4>135 Acalanes Drive, Sunnyvale CA 94086</h4>' +
-	  '</div>';
+      '<h1>CASA DEL SOL</h1>'+
+	    '<h4>135 Acalanes Drive, Sunnyvale CA 94086</h4>' +
+	    '</div>';
 		
     var mapOptions = {
           zoom: 13,
           center: new google.maps.LatLng(37.384558, -122.056735),
+          mapTypeControl: false,
           mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 	
@@ -49,17 +67,18 @@ function log(str){
   document.getElementsByTagName('pre')[0].appendChild(document.createTextNode('['+new Date().getTime()+']\n'+str+'\n\n'));
 }
 
-// TEST
+// Slideshow 
 var sliderObjects = [];
 createSliderObjects();
 
 function plusDivs(obj, n) {
   var parentDiv = $(obj).parent();
-  var matchedDiv;
+  var matchedDiv; 
+
   $.each(sliderObjects, function(i, item) {
     if ($(parentDiv[0]).attr('id') == $(item).attr('id')) {
-      matchedDiv = item;
-      return false;
+      matchedDiv = item;   
+      return false; 
     }
   });
   matchedDiv.slideIndex=matchedDiv.slideIndex+n;
@@ -79,8 +98,7 @@ function createSliderObjects() {
   });
 }
 
-function showDivs(divObject, n) {
-  debugger;
+function showDivs(divObject, n) { 
   var i;
   if (n > divObject.slideContents.length) {
     divObject.slideIndex = 1
@@ -92,4 +110,37 @@ function showDivs(divObject, n) {
     divObject.slideContents[i].style.display = "none";
   }
   divObject.slideContents[divObject.slideIndex - 1].style.display = "block";
+}
+
+
+// Enlarge image for mobile
+function showImage(imgName) {
+  document.getElementById('largeImg').src = imgName;
+  showLargeImagePanel();
+  // Disable scrolling
+  document.querySelector("body").style.overflow = "hidden";
+  unselectAll();
+}
+function showLargeImagePanel() {
+  document.getElementById('largeImgPanel').style.visibility = 'visible';
+}
+function unselectAll() {
+  if(document.selection) document.selection.empty();
+  if(window.getSelection) window.getSelection().removeAllRanges();
+}
+function hideMe(obj) {
+  obj.style.visibility = 'hidden';
+  // Enable scrolling
+  document.querySelector("body").style.overflow = "auto";
+}
+ 
+// Navigational btn to bring user to rentals.html
+function navToRentals () {
+  location.href = "rentals.html"; 
+} 
+
+function navToDesktop() {
+  if (screen.width >= 699) {
+    document.location = "index.html";
+  }  
 }

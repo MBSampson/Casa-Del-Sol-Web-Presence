@@ -27,7 +27,7 @@
   <link href="d_styles.css" rel="stylesheet"> 
 </head>
 
-<body id="d-body-home"> 
+<body id="d-body">
     <!-- ========== NAVBAR MAIN ========== -->
     <nav class="navbar sticky-top navbar-expand-lg ">
       <nav class="navbar navbar-expand-lg ">
@@ -39,10 +39,10 @@
               </li>
               <li class="nav-item">
                 <a href="location.html" class="nav-link">LOCATION</a> 
-              </li>
+              </li> 
               <li class="nav-item">
                 <a href="rentals_page.html" class="nav-link">RENTALS</a> 
-              </li>  
+              </li>   
               <li class="nav-item">   
                 <a href="photos.html" class="nav-link">PHOTOS</a>
               </li>   
@@ -62,32 +62,23 @@
       </nav>
     </nav> 
 
-
-    <main> 
-      <div id="d-hero">
-        <div class="hero-spacer">&nbsp;</div>
-        <div id="hero-mod"> 
-          <h1>CASA DEL&nbsp;SOL</h1>
-          <table class="custom-sun-hr" role="presentation" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>
-                <hr class="sun-hr">
-              </td>
-              <td class="sun-hr-col">
-                <i class="fa fa-sun-o" aria-hidden="true"></i>
-              </td>
-              <td>
-                <hr class="sun-hr">
-              </td>
-            </tr>
-          </table>
-          <p>Casa Del Sol Apartments is a quiet, 18 unit garden-community located on the Sunnyvale/Mountain View border. Our ideal location is minutes from Downtown Sunnyvale and Mountain&nbsp;View, Caltrain, and many great shops and restaurants along El&nbsp;Camino&nbsp;Real.</p>
-        </div>
-      </div>
-    </main> 
-
-    <div class="hero-bg-banner">&nbsp;</div>
-
+    <div id="d-no-rentals"> 
+      <h1 class="welcome-banner">No Rentals Currently Available</h1>   
+      <div class="rental-item">
+        <table class="" role="presentation" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="rental-info">  
+              <h2>Casa Del Sol Apartments</h2>
+              <h3>Please consider us in the future.<br><br>Thank you!<br><br><i class="fa fa-sun-o" aria-hidden="true"></i></h3> 
+            </td> 
+            <td>
+              <img src="./assets/img/home_splash2.jpg" width="100%" alt="" />
+            </td>
+          </tr>
+        </table>
+      </div> 
+    </div>
+  
     <!-- ================== FOOTER SECTION ================== -->
     <footer>
       <div id="contact-wrapper">
@@ -117,7 +108,8 @@
       </div>
     </footer>  
     <!-- ================== END FOOTER SECTION ================== -->
-  
+
+    <script src="script.js"></script> 
     <script src="mobile_index_script.js"></script>
 </body>
 
